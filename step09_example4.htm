@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step09_example4.html</title>
+    <style>
+      canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>canvas 요소 활용해 보기</h1>
+    <!-- canvas 요소는 width와 height를 속성으로 직접 지정할 수 있다. -->
+    <!-- canvas에다가 그림을 그릴 수 있다. 
+            직선, 원, 타원, 사각형, 로딩한 이미지 등등을 원하는 위치에 원하는 크기로 그릴수 있다.-->
+    <!-- 좌표계가 있음. 좌 상단이 원점. 좌 상단을 기준으로 x, y축  -->
+    <!-- 원한다면 좌표계의 원점을 바꾸거나 좌표계를 회전 시킬 수 있다 -->
+    <canvas id="myCanvas" width="800" height="500"></canvas>
+
+    <script>
+      /*
+          const는 constant의 약자
+          변수에 값이 한번 담기면 그 이후에 변경을 불가능 하도록 만드는 예약어
+          즉 변수를 상수화 시키는 기능이다.
+          
+          const num = 10;
+          num = 20; // 변경 불가(에러)
+
+          const names = ["김구라", "해골", "원숭이"]
+          참조값을 다른 참조값으로 교체하는 것은 불가능하지만
+          배열 아이템을 교체 하는 것은 가능.
+      */
+
+      //canvas 요소의 참조값
+      let canvas = document.querySelector("#myCanvas");
+      //canvas에 그림을 그릴 도구(context) 객체 얻어내기
+      let context = canvas.getContext("2d");
+
+      //canvas에 그릴 이미지 로딩하기
+      let snipeImg = new Image(); // <img> 이 요소를 동적으로 만들어내는 것!
+      snipeImg.src = "images/snipe.png";
+
+      setInterval(() => {
+        //여기 함수 내부는 1/100초 마다 한번씩 실행된다.
+        context.clearRect(0, 0, 800, 500);
+        context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100);
+      }, 10); //1초에 100번 호출
+
+      //이미지 로딩이 안료 되었을때 실행할 함수 등록하기
+      snipeImg.onload = () => {
+        // .drawImg(이미지, x, y, width, height)
+        context.drawImage(snipeImg, 0, 0, 100, 100);
+      };
+
+      // canvas 요소의 mousemove 이벤트 처리
+      //  event는 마우스무브 이벤트 객체 {}가 전달되는 것임
+      canvas.addEventListener("mousemove", (event) => {
+        //이벤트가 발생한 곳의 canvas 내에서의 좌표
+        snipeX = event.offsetX;
+        snipeY = event.offsetY;
+        //지정된 사각형 영역을 지우기 clearRect(x, y, width, height);
+        context.clearRect(0, 0, 800, 500); //캔버스 크기로 입력하면 전체 지우기로 활용할 수 있음
+        context.drawImage(snipeImg, x - 50, y - 50, 100, 100);
+        // 폭의 반, 높이의 반 해주면 마우스가 그 좌표의 즉 이미지의 정 가운데에 딱 위치한다.
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step04_Loop5.html</title>
+  </head>
+  <body>
+    <h1>배열의 함수를 활용해서 반복 작업 수행하기</h1>
+
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <p>p4</p>
+    <p>p5</p>
+    <button onclick="print()">출력하기</button>
+
+    <script>
+      let nums = [10, 20, 30, 40, 50];
+
+      /*
+              출력하기 버튼을 누르면 nums 배열에 담긴 숫자가 위의 p 요소에 순서대로
+              출력되도록 프로그래밍 해보세요
+              단, 배열이 가지고 있는 forEach() 함수를 활용.
+              */
+
+      // forEach()라는 함수는 배열에서 item과 index... 값을 가져와서 활용할 수 있는 함수
+
+      function print() {
+        nums.forEach((item, index) => {
+          document.querySelectorAll('p')[index].innerText = item;
+        });
+      }
+
+      //   let nums = [10, 20, 30, 40, 50];
+      //   nums.push(60);
+      //   nums.forEach(function () {
+      //     console.log('진짜 호출이 되네');
+      //   });
+
+      //for문을 사용하여 반복작업을 할 수도 있지만 js에서는 이런식으로도 배열을 이용한 반복 작업 가능.( 좀더 자바스크립트 식의 코딩)
+      // 매개변수를 넣어주기
+      //   nums.forEach(function (item) {
+      //     console.log(item);
+      //   });
+
+      //   nums.forEach(function (item, index) {
+      //     console.log(index + ' : ' + item);
+      //   });
+
+      //method는 동작, 즉 함수 의미
+      //callback 함수 --> 나중에(즉시, 이벤트가 일어났을때, 나중에) 호출 될 함수
+    </script>
+  </body>
+</html>

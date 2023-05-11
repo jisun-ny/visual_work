@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>배열의 활용</h1>
+
+    <script>
+      let nums = [10, 20, 30, 40, 50];
+      // array는 인덱스가 자동 부여
+      // 인덱스를 활용하여 배열 안에 있는 data 사용 가능
+      // data 값을 불러오거나 or 수정하거나
+      // 데이타 불러오기, 참조
+      // 1. let a = nums[0]
+      // 2. colsole.log(nums[0])
+      // 3. alert(nums[0])
+      // 데이타 수정
+      // nums[0] = 120;
+      // 대입 연산자의 좌측에서 참조가 되면 값이 수정된다.
+
+      // nums.
+      // nums.length
+      // nums.forEach
+      // item을 돌아가면서 보여줌
+      nums.push;
+      //배열의 아이템을 뒤에서 추가
+      // nums.push(60);
+
+      nums.splice;
+      // 특정 index의 아이템 1개 삭제
+      // nums.splice (2,1); //2번 인덱스로 부터 1개 삭제
+      // nums.splice (0,1); //0번 인덱스로 부터 1개 삭제
+
+      // nums.splice(잘라내기를 시작할 index, 잘라낼 갯수) --> 특정값들을 삭제한 배열 return
+      // 배열에서 특정 데이타를 잘라내서(삭제해서) 사용하고 싶을 때 사용
+      // 잘라내 버린 데이터를 나중에 사용할거면 변수에 담아서 나중에 사용
+      // let a = nums.splice(2,1)
+
+      //배열의 방 크기 참조
+      let a = nums.length;
+
+      //
+
+      document.querySelector('#sendBtn').addEventListener('click', () => {});
+    </script>
+  </body>
+</html>

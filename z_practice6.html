@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>canvas 요소 활용해 보기</h1>
+    <!-- canvas 요소는 width 와 height 를 속성으로 직접 지정할수 있다. -->
+    <canvas id="myCanvas" width="800" height="500"></canvas>
+    <script>
+      let canvas = document.querySelector("#myCanvas");
+      let context = canvas.getContext("2d");
+
+      let snipeImg = new Image();
+      snipeImg.src = "images/snipe.png";
+
+      let snipeX = 0,
+        snipeY = 0;
+      context.drawImage(snipeImg, snipeX, snipeY, 10, 10);
+    </script>
+  </body>
+</html>

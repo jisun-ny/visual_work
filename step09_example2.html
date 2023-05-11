@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step09_example2.html</title>
+  </head>
+  <body>
+    <h1>스탑워치 만들어보기</h1>
+
+    <p>
+      <strong id="min">0</strong>
+      <strong id="sec">0</strong>
+      <strong id="mSec">0</strong>
+    </p>
+
+    <button id="startBnt">시작</button>
+    <button id="resetBtn">재설정</button>
+
+    <script>
+      //변수 선언을 한번에 여러개 하기
+      let min = 0,
+        sec = 0,
+        mSec = 0;
+      // 상태값을 관리할 변수를 만들고 초기 상태값 대입하기
+      let isStarted = false;
+
+      document.querySelector("#startBnt").addEventListener("click", (event) => {
+        //이벤트가 일어난 요소의 innerText 바꾸기
+
+        //만일 시작된 state라면 "중단"으로 바꾸고
+        //중단된 state라면(시작된 state가 아니라면) "시작"으로 바꾼다.
+        //(상태값 관리) --> 상태값이 두개일때는 toggle 사용가능
+        // 상태가 두가지라면 불리언으로 관리
+        if (isStarted) {
+          isStarted = false;
+          event.target.innerText = "시작";
+        } else {
+          isStarted = true;
+          event.target.innerText = "중단";
+        }
+      });
+
+      setInterval(() => {
+        // 만일 시작된 상태가 아니라면 함수를 여기서 종료하기
+        //함수는 원래 함수 수행을 다 하고 리턴하는데, retrun이라는 예약어를 통해서 강제로 종료하고 리턴시킬 수 있음
+        // 이 함ㅅ는 1/100초마다 계속 실행이 되지만 계속 return되면서 끝남.
+        if (isStarted == false) {
+          // if(!isStarted) {}
+          return;
+        }
+
+        // 1/100초 마다 한번씩 호출되는 함수
+        mSec++;
+        if (mSec == 100) {
+          sec++;
+          mSec = 0;
+        }
+        if (sec == 60) {
+          min++;
+          sec = 0;
+        }
+        document.querySelector("#mSec").innerText = mSec;
+        document.querySelector("#sec").innerText = sec;
+        document.querySelector("#min").innerText = min;
+      }, 10);
+
+      document.querySelector("#resetBtn").addEventListener("click", () => {
+        //변수를 모두 초기화
+        (min = 0), (sec = 0), (mSec = 0);
+        isStarted = false;
+        //초기화된 값을 화면에 반영
+        document.querySelector("#mSec").innerText = mSec;
+        document.querySelector("#sec").innerText = sec;
+        document.querySelector("#min").innerText = min;
+        //버튼의 innerText도 초기화
+        document.querySelector("#startBtn").innerText = "시작";
+      });
+    </script>
+  </body>
+</html>

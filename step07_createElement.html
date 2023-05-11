@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step07_createElement.html</title>
+  </head>
+  <body>
+    <h1>문서객체를 javascript로 만들기 테스트 createElement</h1>
+    <div class="wrapper"></div>
+
+    <script>
+      // p요소를 만들어서 참조값을 p1이라는 변수에 담기
+      let p1 = document.createElement('p');
+      // 위에서 만든 p 요소에 innerText를 출력하고
+      p1.innerText = 'p1 입니다';
+      // .wrapper div에 추가하기
+      document.querySelector('.wrapper').append(p1);
+    </script>
+  </body>
+</html>

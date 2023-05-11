@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step06_event4_example.html</title>
+
+    <style>
+      .wrapper {
+        display: flex;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>원하는 박스를 클릭해 보세요</h1>
+    <div class="wrapper">
+      <!-- div.box{box$}*10 -->
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+      <div class="box">box4</div>
+      <div class="box">box5</div>
+      <div class="box">box6</div>
+      <div class="box">box7</div>
+      <div class="box">box8</div>
+      <div class="box">box9</div>
+      <div class="box">box10</div>
+    </div>
+
+    <script>
+      //   for (let i = 0; i < 10; i++) {
+      //     document
+      //       .querySelectorAll('.box')
+      //       [i].addEventListener('click', (event) => {
+      //         event.target.style.backgroundColor = 'yellow';
+      //       });
+      //   }
+
+      // forEach() 사용하기
+      let divs = document.querySelectorAll('.box');
+
+      divs.forEach((item) => {
+        //item은 각 div의 참조값이고 event listener 함수를 등록해야한다.
+        item.addEventListener('click', (event) => {
+          event.target.style.backgroundColor = 'yellow';
+        });
+      });
+    </script>
+  </body>
+</html>

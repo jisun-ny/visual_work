@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step09_example5.html</title>
+    <style>
+      canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>canvas 요소 활용해 보기</h1>
+    <p>토끼 맞춘 횟수 : <strong id="point">0</strong></p>
+    <!-- canvas 요소는 width 와 height 를 속성으로 직접 지정할수 있다. -->
+    <canvas id="myCanvas" width="800" height="500"></canvas>
+    <script>
+      let canvas = document.querySelector("#myCanvas");
+      let context = canvas.getContext("2d");
+
+      let snipeImg = new Image();
+      snipeImg.src = "images/snipe.png";
+
+      let holeImg = new Image();
+      holeImg.src = "images/hole.png";
+
+      const backImg = new Image();
+      backImg.src = "images/background.jpg";
+
+      const rabbitImg1 = new Image();
+      rabbitImg1.src = "images/rabbit_1.png";
+
+      const rabbitImg2 = new Image();
+      rabbitImg2.src = "images/rabbit2.png";
+
+      const rabbitImgs = [rabbitImg1, rabbitImg2];
+
+      const fireSound = new Audio("sounds/fire.wav");
+      const dieSound = new Audio("sounds/birddie.mp3");
+
+      const dialImg = new Image();
+      dialImg.src = "images/dial.png";
+
+      const secImg = new Image();
+      secImg.src = "images/clock_sec.png";
+
+      const clockX = 700;
+      const clockY = 100;
+
+      const bubbleImgs = [];
+      for (let i = 0; i < 6; i++) {
+        let tmp = new Image();
+        tmp.src = "images/b" + i + ".png";
+        bubbleImgs.push(tmp);
+      }
+
+      let snipeX = 0,
+        snipeY = 0;
+
+      let rabbitX = 400,
+        rabbitY = 250;
+
+      let rabbitIndex = 0;
+      let count = 0;
+
+      let point = 0;
+
+      const bubbles = [];
+
+      setInterval(() => {
+        count++;
+        context.drawImage(backImg, 0, 0, 800, 500);
+
+        context.save();
+        context.translate(clockX, clockY);
+        context.drawImage(dialImg, 0 - 100, 0 - 100, 200, 200);
+        context.rotate((count * Math.PI) / 180);
+        context.drawImage(secImg, 0 - 4, 0 - 90, 8, 90);
+        context.restore();
+
+        context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100);
+
+        // 토기보다 총알자국이 먼저 그려져야함
+        for (let i = 0; i < holes.length; i++) {
+          let tmp = holes[i];
+          context.drawImage(holeImg, tmp.x - 10, tmp.y - 10, 20, 20);
+        }
+
+        context.drawImage(
+          rabbitImgs[rabbitIndex],
+          rabbitX - 50,
+          rabbitY - 50,
+          100,
+          100
+        );
+
+        if (count % 20 == 0) {
+          rabbitIndex++;
+          if (rabbitIndex == 2) {
+            rabbitIndex = 0;
+          }
+        }
+
+        let ranNum = parseInt(Math.random() * 100);
+        if (ranNum == 10) {
+          rabbitX = Math.random() * 700 + 50;
+          rabbitY = Math.random() * 400 + 50;
+        }
+
+        for (let i = 0; i < bubbles.length; i++) {
+          let tmp = bubbles[i];
+          context.drawImage(
+            bubbleImgs[tmp.index],
+            tmp.x - 25,
+            tmp.y - 25,
+            50,
+            50
+          );
+        }
+        for (let i = 0; i < bubbles.length; i++) {
+          let tmp = bubbles[i];
+          tmp.x += tmp.speedX;
+          tmp.y += tmp.speedY;
+
+          let isOut = tmp.x < -25 || tmp.x > 825 || tmp.y < -25 || tmp.y > 525;
+          if (isOut) {
+            tmp.isOut = true;
+          }
+        }
+        for (let i = 0; i < bubbles.length; i++) {
+          let tmp = bubbles[i];
+          if (tmp.isOut) {
+            bubbles.splice(i, 1);
+          }
+        }
+      }, 10);
+
+      canvas.addEventListener("mousemove", (e) => {
+        snipeX = e.offsetX;
+        snipeY = e.offsetY;
+      });
+
+      const holes = [];
+
+      canvas.addEventListener("mousedown", (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        const hole = { x: x, y: y };
+        holes.push(hole);
+
+        fireSound.currnetTime = 0;
+        fireSound.play();
+
+        let isRabbitDie =
+          rabbitX - 50 < x &&
+          x < rabbitX + 50 &&
+          rabbitY - 50 < y &&
+          y < rabbitY + 50;
+
+        if (isRabbitDie) {
+          dieSound.currentTime = 0;
+          dieSound.play();
+
+          point++;
+          document.querySelector("#point").innerText = point;
+
+          for (let i = 0; i < 6; i++) {
+            let tmp = {};
+            tmp.index = i;
+            tmp.x = rabbitX;
+            tmp.y = rabbitY;
+            tmp.speedX = Math.random() * 20 - 10;
+            tmp.speedY = Math.random() * 20 - 10;
+            tmp.isOut = false;
+            bubbles.push(tmp);
+          }
+          rabbitX = Math.random() * 700 + 50;
+          rabbitY = Math.random() * 400 + 50;
+        }
+      });
+    </script>
+  </body>
+</html>

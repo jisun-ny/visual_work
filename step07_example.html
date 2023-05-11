@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>steo07_example.html</title>
+    <style>
+      .container {
+        width: 768px;
+        margin: 0 auto;
+        /* 폭을 정하고 마진 0  auto하면 마진이 탑 바텀 0, 왼쪽 오른쪽 자동으로 똑같이 잡히니까 가운데 정렬이 됨. */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>친구 목록입니다.</h1>
+      <button id="printBtn">출력하기</button>
+      <ul id="friendList"></ul>
+    </div>
+
+    <script>
+      let names = ["김구라", "해골", "원숭이", "주뎅이", "덩어리"];
+      // 위 배열에 저장된 이름을 친구 목록에 출력해보세요.
+      // 버튼을 눌렀을때
+
+      document.querySelector("#printBtn").addEventListener("click", () => {
+        for (let i = 0; i < names.length; i++) {
+          let li = document.createElement("li");
+          li.innerText = names[i];
+          document.querySelector("#friendList").append(li);
+        }
+      });
+
+      // for (let i = 0; i < names.length; i++) {
+      //   let li = document.createElement("li");
+      //   li.innerText = names[i];
+      //   document.querySelector("#friendList").append(li);
+      // }
+
+      //   names.forEach((item) => {
+      //     let li = document.createElement("li");
+      //     li.innerText = item;
+      //     document.querySelector("#friendList").append(li);
+      //   });
+    </script>
+  </body>
+</html>

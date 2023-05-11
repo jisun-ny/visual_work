@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType8.html</title>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>function</strong> type의 영역(scope)</p>
+
+    <script>
+      //페이지 로딩 시점에 실행되는 이 영역은 global 영역입니다.
+      //global 영역에 정의된 자원들은 어디에서나 사용이 가능 합니다.
+
+      let myName = '김구라';
+
+      function test() {
+        //함수의 중괄호 안에 속한 이 영역은 local 영역입니다.
+        //local 영역 안에 정의된 자원들은 해당 local 영역 안에서만 사용할 수 있습니다.
+        let yourName = '해골'; // 함수가 콜 될때마다 만들어지고 사용되고 사라지고~ 뭐 안사라질수도있고...
+        console.log(yourName);
+      }
+
+      function test2() {
+        // local 영역 안에서 바깥 영역에 정의된 자원들을 사용할 수 있습니다.
+        console.log(myName);
+        test();
+      }
+    </script>
+  </body>
+</html>

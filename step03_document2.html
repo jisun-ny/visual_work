@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step03_document2.html</title>
+    <style>
+      p {
+        color: blue;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        cursor: pointer;
+        /* 커서 손가락 모양 나오게 할 때 */
+        /* margin-left: 100px; */
+        transition: margin-left 0.4s linear;
+        /* margin-left 실행시 0.4초 동안에 일정한 속도로 해줭 */
+        /* ease-out 신속히 출발,변화해서 부드럽게 안착하기 */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>인라인 css 테스트</h1>
+
+    <!-- <p style="color: red; background-color: antiquewhite">가나다라마바사아자</p> -->
+    <!-- 
+        이 인라인css를 자바스크립트에서 할 수도 있다!!
+        ___.style.color = "red"; 
+        ___.style.background-color = "antiquewhite"; ( not working! -> 자바스크립트에서는 -를 연산자로 인식하기 때문에)
+        ___.style.backgroundColor = "antiquewhite"; ( working! js에서 쓰이는 카멜케이스로 적어줄 것!)
+    -->
+
+    <p>가나다라마바사아자</p>
+    <div class="box" onclick="addMargin()">눌러보셈</div>
+    <script>
+      // 위의 box div를 클릭하면 우측으로 100px 이동하도록 프로그래밍 해보세용
+
+      let addMargin = () => {
+        document.querySelector('.box').style.marginLeft = '100px';
+      };
+    </script>
+  </body>
+</html>

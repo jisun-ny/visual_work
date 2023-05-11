@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType11.html</title>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>function</strong> type</p>
+
+    <script>
+      // 두개의 매개 변수누를 갖는 함수
+      let printSum = function (num1, num2) {
+        let sum = num1 + num2;
+        console.log(num1 + '과 ' + num2 + '의 합은 ' + sum);
+        console.log(`${num1}과 ${num2}의 합은 ${sum}`);
+      };
+
+      //함수를 호출하면서 값 2개 전달
+      printSum(10, 20);
+
+      // 함수를 call하면서 함수를 전달할 수도 있다.
+
+      let useFunc = function (f) {
+        f();
+      };
+
+      useFunc(function () {
+        console.log('하나');
+        console.log('둘');
+        console.log('셋');
+      });
+
+      useFunc(() => {
+        console.log('호출됨!');
+      });
+    </script>
+  </body>
+</html>

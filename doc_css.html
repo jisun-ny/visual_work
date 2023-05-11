@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: blue;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        cursor: pointer;
+        transition: margin-left 0.4s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>인라인 css 테스트</h1>
+    <p>가나다라마바사아자</p>
+    <button>Reset</button>
+    <div class="box" onclick=" addMargin()">눌러보셈</div>
+
+    <script>
+      // 버튼을 누를 때마다 박스가 100px씩 오른쪽으로 이동하게 해보세용 --> marginLeft가 클릭할 때마다 100씩 증가
+      let mLeft = 0;
+      function addMargin() {
+        mLeft += 100;
+        document.querySelector('.box').style.marginLeft = mLeft + 'px';
+      }
+    </script>
+  </body>
+</html>

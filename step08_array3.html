@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step08_array3.html</title>
+  </head>
+  <body>
+    <h1>배열 객체의 활용</h1>
+    <p>배열의 .sort() 함수를 이용해서 정렬하기</p>
+
+    <script>
+      let names = ["bbb", "aaa", "ccc"];
+      // 배열의 sort() 함수를 호출하면 알파벳 순서대로 정렬된다.
+      // sort() 함수안에 아무것도 전달하지 않으면 unicode 순서대로 정렬되기 때문에
+      // 알파벳 순서대로 정렬된다.
+      // 원본을 정렬시킨다.
+      let result = names.sort();
+
+      // sort() 함수가 리턴하는 값은 원본배열의 참조값이다.
+      // 즉 names와 result는 같다.
+
+      let isEqual = names == result; //true
+
+      // 단순히 문자열을 오름차순 정렬할때는 sort()만 호출해주면 된다.(나머지는 콜백함수를 넣어줘야함)
+    </script>
+  </body>
+</html>

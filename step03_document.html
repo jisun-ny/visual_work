@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step03_document.html</title>
+  </head>
+  <body>
+    <h1>document object 사용해 보기</h1>
+    <button onclick="changeH1()">바꾸기</button>
+    <!-- onclick="여기는 js영역" 클릭할 때.마.다. 호출됨 -->
+    <p id="one" onmouseover="changeP1()">p1</p>
+    <p class="my-class">p2</p>
+    <p class="my-class">p3</p>
+    <input type="text" id="two" />
+    <button onclick="send()">전송 &rarr;</button>
+    <input type="text" id="three" />
+    <!-- input은 단독 요소 -> innerText 없음! value 존재 -->
+    <script>
+      // UI를 javascript로 제어할 수 있다.
+
+      // h1 요소의 innerText를 특정 버튼(바꾸기 버튼)을 눌렀을 때 바꾸고 싶다.
+      function changeH1() {
+        document.querySelector('h1').innerText = 'h1바꾸기';
+      }
+
+      // p1에 mouseover가 되었을 때 innerText를 "마우스가 올라왔네?"라고 변경되도록 프로그래밍 해보세요.
+
+      function changeP1() {
+        document.querySelector('#one').innerText = '마우스가 올라왔네?';
+      }
+
+      //#two에 문자를 입력하고 전송 버튼을 누르면 텍스트가 #three에 옮겨져서 뜨게 하고싶다.
+      // 1. 첫번째 input 요소에 입력한 value를 읽어온다.
+      // 2. 위에서 읽어온 value 값을 두번째 input 요소의 value 값으로 넣어준다.
+      function send() {
+        let msg = document.querySelector('#two').value;
+        document.querySelector('#three').value = msg;
+        // msg는 local variable이다.
+      }
+
+      /* 
+    let first = document.querySelector('#two').value;
+    let second = document.querySelector('#three').value
+
+    let send= () => {
+        second = first;
+    }
+
+    이렇게 코딩하면 작동하지 않음
+    why? first, second 변수가 만들어지는 시점은 페이지 로딩 시점
+    따라서 만들어질 땐 비어있음
+    이후 내가 input에 value값을 입력해봤자 first와 second은 그대로 비어있음.
+
+    */
+
+      /*
+    let firstInput = document.querySelector('#two')
+    let secondInput = document.querySelector('#three')
+    즉 value 값 말구 참조값을 받아오기
+    let send= () => {
+        secondInput.value = firstInput.value ;
+    }
+
+    이 경우에는 참조값을 받아온 것이기 때문에 
+    버튼을 누를때마다 value값을 받아올 수 있음.
+    it's working
+    */
+
+      //예를들어, input의 밸류를 읽어와서 나중에 사용할거면? -> 변수에 담아두자!
+
+      // input id="two"에 hello를 입력했다고 가정했을 때
+      let a = document.querySelector('#two').value;
+
+      // a = "hello"
+      // document.querySelector('#two').value; = "남지선"
+      // a의 값은 hello
+
+      // let changeH1 = function() {}
+      // 보통 함수의 이름은 동사가 들어감. -> 동작을 담고있으니까.
+    </script>
+
+    <!-- 
+        페이지 로딩 시점에
+        html, head, meta*3, title
+        body, h1, buttom, p*3, input*2, script 
+        
+        총 9개의 문서 object를 사물함 영역에 만들어 준다.
+        (마크업 하나하나는 다 object이다.)
+        -> 예를 들어 내가 input요소를 제어하고싶으면 input요소의 key값을 받아와야함. 
+                                (특정 시점에 -> js)
+                                document라는 기본 오브젝트 활용
+    
+    document.querySelector
+    는 
+
+    let document = { qeurySelector : function() {}, ....... }
+    이렇게 생겼따는 것을 생각해볼 수 있다.
+
+    document.querySelector("h1")
+    -> <h1>document object 사용해 보기</h1>
+    -> 요소 하나하나는 다 객체이기 때문에 h1의 저장소의 번호(참조값)를 가져옴.
+    -> 하지만 저장소번호를 알고싶은게 아니기 때문에 개발자를 위해 저장소에 저장된 내용을 띄워줌
+    -> h1요소의 참조값 return
+
+    document.querySelector("h1").innerText
+    -> 'document object 사용해 보기'
+    document.querySelector("h1").innerText = "오잉?"
+    -> '오잉?'
+    
+    -->
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType7.html</title>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>function</strong> type</p>
+    <script>
+      // function type을 만드는 방법 3가지
+      // 1. 이름이 있는 함수를 만든다.
+      function greet() {
+        console.log('안녕하세요');
+      }
+
+      // -> greet 이라는 변수에 function type data가 들어있다고 생각해도 됨.
+
+      // 2. 이름이 없는 함수를 만들어서 변수에 대입
+      let greet2 = function () {
+        console.log('안녕하세요2');
+      };
+
+      // 3. 이름이 없는 함수를 간략히 만들어서 변수에 대입 (화살표 함수 arrow function)
+      let greet3 = () => {
+        console.log('안녕하세요3');
+      };
+
+      // undefined에 대한 이해
+
+      //undefined는 값도 타입도 undefined
+
+      //변수를 선언하고 초기 값을 넣지 않으면 undefined가 들어 있다.
+      let a;
+      // undefined는 undefined type이다.
+      let b = undefined;
+
+      //   alert();
+      //   함수를 호출하면 함수가 호출이 되고 함수가 종료되면서 그 함수가 위치한 자리에 어떠한 값이 오게 됨( 그때그때 다름)
+
+      //    undefined
+      // let result = alert; --> result에 alert 함수 대입 (function type)
+      // let result2 = alert(); --> result2 에는 undefined 대입 (undefiend type)
+      // 하지만 undefined 값을 변수에 담에서 쓸 일은 없음
+
+      //confirm() -> 확인 누르면 true, 취소 누르면 false
+      //이 함수는 호출->실행 이후  boolean 타입 값이 됨.
+
+      //prompt(); --> 사용자 입력창을 띄워 입력한 내용을 "" string type의 데이터로 가져옴!
+      // 숫자를 입력해도 '' 스트링으로 출력
+      //prompt("여기에 쓴 내용이 레이블로 쓰임" );
+      // --> 함수를 콜만 하는 것이 아니라 콜 하면서 값을 전달 할 수 있기도 하다
+
+      document.querySelector('h1').innerText; // --> string type
+      //document --> object type
+      //document.querySelector --> function type
+      //document.querySelector('h1') --> object type
+      //document.querySelector('h1').innerText --> string type
+
+      // document 기본 오브젝트를 이용하여 html의 모든 요소를 자바 스크립트로 제어할 수 있다.
+
+      //함수 호출은 어떤 행동을야기하기 위하여 일수도
+      // 값을 바꾸기 위해서 일수도?
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType9.html</title>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>function</strong> 의 return type 확인</p>
+
+    <script>
+      // undefined를 리턴하는 함수
+      function test() {
+        console.log('test() 호출됨');
+      }
+
+      // number type을 리턴하는 함수
+      function getNum() {
+        console.log('getNum() 호출됨');
+        return 999;
+      }
+
+      function getNum2() {
+        let num = 999;
+        console.log('getNum() 호출됨');
+        // 변수 안에 있는 값을 변수명으로 리턴해 줄 수도 있다.
+        return num; //리턴할 데이터를 참조하면 자동으로 참조된 값이 리턴된다.
+      }
+
+      // string type을 리턴하는 함수
+      function getName() {
+        console.log('getName() 호출됨');
+        return 'jiseon';
+      }
+
+      function getName2() {
+        let name = 'jiseon';
+        console.log('getName2() 호출됨');
+        return name;
+      }
+
+      //boolean type을 리턴하는 함수
+
+      function isEven() {
+        console.log('isEven() 호출됨');
+        return true;
+      }
+
+      // object type을 리턴하는 함수
+      function getMember() {
+        console.log('getMember() 호출됨');
+        let mem = { num: 1, name: '김구라', addr: '노량진' };
+        return mem;
+      }
+      //getMember --> function type
+      //getMember()--> object type
+      //getMember().name --> string type "김구라"
+      //getMember().addr --> string type "노량진"
+
+      // array type을 리턴하는 함수
+      function getFriends() {
+        console.log('getFriends() 호출됨');
+        let friends = ['김구라', '해골', '원숭이', '주뎅이', '덩어리'];
+        return friends;
+      }
+
+      //
+      //   let a = getMember;
+      //   undefined
+      //   let b = getMember();
+      //   getMember() 호출됨
+      //   undefined
+      // a -> function type     b -> object type
+
+      let myObj = {
+        getData: function () {
+          let data = { num: 1, name: 'jiseon' };
+          return data;
+        },
+        getDatas: function () {
+          let datas = ['라면', '치킨', '피자'];
+          return datas;
+        },
+      };
+
+      // let a = myObj
+      // undefined
+      // a --> object type
+      // {getData: ƒ, getDatas: ƒ}
+      // let b = myObj.getData;
+      // undefined
+      // b --> function type
+      // ƒ () {
+      //           let data = { num: 1, name: 'jiseon' };
+      //           return data;
+      //         }
+      //
+      // let c=myObj.getData();
+      // undefined
+      // c --> object type
+      // {num: 1, name: 'jiseon'}
+      // let d = myObj.getData().name;
+      // undefined
+      // d --> string type
+      // 'jiseon'
+      // let e = myObj.getData().num;
+      // undefined
+      // e --> number type
+      // 1
+
+      // let a = myObj.getDatas;
+      // undefined
+      // a --> function t
+      // ƒ () {
+      //           let datas = ['라면', '치킨', '피자'];
+      //           return datas;
+      //         }
+      // let b = myObj.getDatas();
+      // undefined
+      // b --> array type
+      // (3) ['라면', '치킨', '피자']
+      // let c = myObj.getDatas()[0];
+      // undefined
+      // c --> string t
+      // '라면'
+      // let d = myObj.getDatas()[1];
+      // undefined
+      // d --> string t
+      // '치킨'
+      // let e = myObj.getDatas()[2];
+      // undefined
+      // e --> string t
+      // '피자'
+
+      //    기본적 구조
+      //     let myObj = {
+      //     getData: function () { },
+      //     getDatas: function() { }
+      //   };
+    </script>
+  </body>
+</html>

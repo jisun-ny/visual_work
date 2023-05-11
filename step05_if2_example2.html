@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step05_if2_example2.html</title>
+  </head>
+  <body>
+    <h1>논리 연산자 테스트</h1>
+    <p>
+      유아 전용 놀이기구 입니다. <br />
+      탑승 조건 <br />
+      몸무게는 30 kg 미만 <br />
+      키는 150cm 미만 <br />
+    </p>
+    <input type="text" id="weight" placeholder="몸무게 입력..." /><br />
+    <input type="text" id="height" placeholder="키 입력..." /><br />
+    <button onclick="check()">확인하기</button>
+    <p id="result"></p>
+    <p id="result2"></p>
+    <script>
+      /*
+        키와 몸무게를 입력하고 확인하기 버튼을 눌렀을 때
+        몸무게는 30 미만 그리고 키도 150 미만일 때
+        id가 result인 요소의 innerText에 "탑승 가능"을 출력하고
+        그렇지 않은 경우에는 "탑승 불가"를 출력하도록
+        프로그래밍 해보세요.
+        */
+
+      function check() {
+        let w = document.querySelector('#weight').value;
+        let h = document.querySelector('#height').value;
+        let rs = document.querySelector('#result');
+        //rs는 함수 밖에 있어도 상관없다.
+        //rs라는 변수에 document.querySelector('#result').innerText를 복사해오면 복사한 시점은 버튼이 클릭될떄! 이때는 <p></p>는
+        // 빈공간이기떄문에 값이 없는 상태! 이후에 rs의 값을 바꿔준다고해서 <p></p>가 자동으로 바뀌는 것은 아님!!
+        // 따라서 innerText까지하지말고 <p>의 참조값을 복사해와서 사용하자!
+
+        //let canRide = w < 30 && h < 150; 이렇게 변수에 넣고 if (canRide) {} 이렇게 써도 됨
+        if (w < 30 && h < 150) {
+          rs.innerText = '탑승 가능';
+        } else {
+          rs.innerText = '탑승 불가';
+        }
+
+        // if (w > 30 || h > 150) {
+        //   document.querySelector('#result2').innerText = '탑승 불가';
+        // } else {
+        //   document.querySelector('#result2').innerText = '탑승 가능';
+        // }
+      }
+    </script>
+  </body>
+</html>

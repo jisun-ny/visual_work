@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step02_Operator2.html</title>
+  </head>
+  <body>
+    <h1>논리 연산자</h1>
+    <script>
+      /*
+      2. 논리(boolean) 연산자
+      논리 값을 연산해주는 연산자
+      */
+
+      // && and 연산자
+      //연산에 참여히는 boolean 값이 모두 다 true면 결과는 true
+      let result1 = false && false; // false
+      let result2 = false && true; //false
+      let result3 = true && false; //false
+      let result4 = true && true; //true
+
+      // || or 연산자
+      // 연산에 참여하는 boolean값이 어느 하나만 true이면 결과는 true 이다.
+      let result5 = false || false; // false
+      let result6 = false || true; //true
+      let result7 = true || false; //true
+      let result8 = true || true; //true
+
+      // ! 는 논리값을 반전시키는 not 연산자
+      // 읽을 때는 "~가 아니면" 이라고 읽으면 된다.
+      let result9 = !true; //not true --> false
+      let result10 = !false; //not false --> true
+    </script>
+  </body>
+</html>

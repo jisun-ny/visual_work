@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step05_if2_example3.html</title>
+  </head>
+  <body>
+    <h1>다중 if문 테스트</h1>
+    <input type="text" id="jumsu" placeholder="점수 입력..." />
+    <button onclick="check()">확인하기</button>
+    <p><strong id="result"></strong>학점 입니다.</p>
+    <script>
+      /*
+        input 요소에 점수를 입력하고 확인하기 버튼을 눌렀을 때 점수가
+        90점 이상이면 "A"
+        80점 이상이면 "B"
+        70점 이상이면 "C"
+        60점 이상이면 "D"
+        그 이외의 경우에는 "F"라는 문자열을
+        id가 result인 곳의 i
+        79
+         nnerText로 출력해 보세요.
+        */
+
+      function check() {
+        let score = document.querySelector("#jumsu").value; //페이지 로딩 시점에 읽어와봐야 비어있을 것이기 때문에 함수 안에 있어야함.
+        let rs = document.querySelector("#result"); //여기 있는 값을 불러와서 변수에 대입
+
+        //let rs = document.querySelector('#result').innerText; 이렇게 변수를 만들어버리면
+        // rs 변수에는 처음엔 빈 문자열
+        // 90점 이상에는 rs는 a 하지만 이건 rs라는 변수의 값만 바뀌는 것!
+        // 변수 rs의 값이 변한다고 <p>의 innerText가 변하는 것이 아니다!!
+
+        if (score >= 90) {
+          rs.innerText = "A";
+        } else if (score >= 80) {
+          rs.innerText = "B";
+        } else if (score >= 70) {
+          rs.innerText = "C";
+        } else if (score >= 60) {
+          rs.innerText = "D";
+        } else {
+          rs.innerText = "F";
+        }
+      }
+    </script>
+  </body>
+</html>

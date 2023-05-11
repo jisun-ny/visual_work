@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step03_document3.html</title>
+    <style>
+      p {
+        color: blue;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        cursor: pointer;
+
+        transition: margin-left 0.4s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>인라인 css 테스트</h1>
+    <p>가나다라마바사아자</p>
+    <button onclick="reset()">Reset</button>
+    <div class="box" onclick="addSize(); addMargin()">눌러보셈</div>
+    <!-- onclick="addMargin()"  -->
+    <!-- onclick="addSize(); addMargin()" 이렇게 세미콜론을 사용해서 두가지 함수 호출가능 --근데 잘 안씀 -->
+    <!-- 보통은 여러 기능을 한번에 갖는 함수를 만들거나, a함수 안에서 b함수 호출 -->
+    <script>
+      // 버튼을 누를 때마다 박스가 100px씩 왼쪽으로 이동하게 해보세용
+
+      // 2️⃣함수 안에서 사용할 변수를 페이지 로딩 시점에 미리 초기 값을 대입해서 만들어 둔다.
+      //global 영역에서 선언된 변수는 함수 안에서 사용 가능
+      //💛
+      let mLeft = 0; // 여러 함수에서 활용된 자원들은 global에 입력하면 됨.  (나중에는 글로발영역에 이런 자원들은 잘 안만듬 왜냐면 클라이언트가 조작이 가능하기 떄문에. 보통 함수 안에 캡슐화해서 만듬)
+
+      let addMargin = () => {
+        // 1️⃣let mLeft = 0;
+        //💛
+        mLeft += 100;
+        console.log(mLeft);
+        // let mLeft = 0;는 지역변수이기떄문에 버튼을 누를때마다 새.로. 만들어짐. 따라서 버튼 누를 때마다 계속 100 밖에 안됨 ㅜ
+        // 따라서 2️⃣의 방법으로 코딩.
+
+        document.querySelector('.box').style.marginLeft = mLeft + 'px';
+      };
+
+      let vwidth = 100;
+      let vheight = 100;
+      let addSize = () => {
+        vwidth += 100;
+        vheight += 100;
+        console.log(vwidth);
+        console.log(vheight);
+        document.querySelector('.box').style.width = vwidth + 'px';
+        document.querySelector('.box').style.height = vheight + 'px';
+      };
+
+      let reset = () => {
+        //💛
+        mLeft = 0;
+        document.querySelector('.box').style.marginLeft = mLeft + 'px';
+        vwidth = 100;
+        vheight = 100;
+        document.querySelector('.box').style.width = vwidth + 'px';
+        document.querySelector('.box').style.height = vheight + 'px';
+      };
+    </script>
+  </body>
+</html>

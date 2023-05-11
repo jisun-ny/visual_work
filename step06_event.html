@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step06_event.html</title>
+  </head>
+  <body>
+    <h1>Event Listener 함수 등록 pattern 익히기</h1>
+    <button onclick="send()">전송</button>
+    <button id=" sendBtn">전송2</button>
+
+    <script>
+      //전송 버튼을 눌렀을 때 알림창에 "전송합니다"를 출력하도록 해보기
+      let send = () => {
+        alert('전송합니다');
+      };
+      // 지금 이 함수는 global영역에 존재.(-> onclick 을 사용해서 이벤트 처리를 한다면)
+      // 만약 이 함수가 다른 함수 안에(local) 존재한다면
+      // 얘는 불러와서 쓸 수 없다..
+      // onclick="" , onmouseover="".... 를 이용하여 코딩하면 결국 함수를 global 영역에 만들도록 강제...
+      // 여러명이 만든 코드를 합칠 때 변수명 충돌이 일어날 수 있음. /다른 사람이 임의로 변경 가능(보안 x)
+      // -> 자기만의 고유한 영역에서 개발
+
+      //id = sendBtn인 요소에 "click" 이벤트가 일어나면 호출될 callback함수 등록
+      // 이 친구는 global 영역에 변수가 만들어지지 않음!! addEventListener함수 안에 만들어짐!
+      document.querySelector('#sendBtn').addEventListener('click', () => {});
+      // addEventListener( 이벤트 이름, 콜백 함수 )
+      //                  string type   function type
+      //                      "click"
+      //                     "mouseover"
+      //                      "focus"...
+      // -> 이 문서 객체에 이벤트가 발생할 때마다 콜백함수 실행
+      // 콜백 함수 -> 지금 전달하지만 나중에 호출되는 함수. 호출시점은 다양.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step09_example.html</title>
+  </head>
+  <body>
+    <h1>setInterval, setTimeout 함수 사용해 보기</h1>
+    <p><strong id="min">0</strong>분 <strong id="sec">0</strong>초</p>
+
+    <script>
+      //setTimeout, setInterval은 javascript built-in 함수이다.
+
+      //이 함수는 페이지 로딩하면 1초 이후에 실행된다.
+      setTimeout(() => {
+        console.log("setTimeout에 전달된 함수가 호출됐다!");
+      }, 1000);
+      //delay time(ms)
+
+      //for 문은 최대 속도로 호ㅗㄹ로로록 돌아버리는건데
+      //setInterval은 일정한 간격으로
+      setInterval(() => {
+        console.log("setInterval에 전달된 함수가 호출되네?");
+      }, 1000);
+
+      // 아래의  setInterval 함수를 이용해서 위의 시간이 진행되도록 해보세요.
+
+      //   1. 초를 1초씩 증가시킨다.
+
+      // Interval 함수 안에서 사요알 변수를 만들고 0으로 초기화하기
+      let min = 0;
+      let sec = 0; // 이렇게 밖에 선언해야 페이지 로딩시점에 한번만 0으로 초기값을 줄 수 있다.
+
+      setInterval(() => {
+        sec += 1;
+        //   2. 만일 증가 시킨 초가 60이면 분을 1씩 증가 시킨다.
+        if (sec == 60) {
+          min += 1;
+          sec = 0;
+        }
+
+        //   3. 초와 분을 위의 strong 요소의 immerText로 각각 출력한다.
+
+        min = document.querySelector("#min").innerText;
+        sec = document.querySelector("#sec").innerText;
+      }, 1000);
+    </script>
+  </body>
+</html>

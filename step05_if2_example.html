@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step05_if2_example.html</title>
+  </head>
+  <body>
+    <h1>if~else 문 테스트</h1>
+    <p>이 번지 점프를 몸무게가 100kg이 넘으면 탈 수가 없습니다.</p>
+    <input type="text" id="weight" placeholder="몸무게 입력..." />
+    <button onclick="check()">확인</button>
+    <p id="result"></p>
+
+    <script>
+      /*
+        위의 input 요소에 몸무게를 입력하고 확인 버튼을 눌렀을 때
+        입력한 몸무게가 100 이상이면
+        id가 result인 p요소에 "이용이 불가합니다."를 출력하고
+        100 이상이 아니면 "이용가능"을 출력하도록 프로그래밍 해 보세요.
+        */
+
+      function check() {
+        // 1. 입력한 몸무게를 읽어온다
+        // let w = document.querySelector('#weight').value; 이 코드가 함수 밖에 있으면 페이지 로딩시점에 값을 가져옴
+        let w = document.querySelector('#weight').value;
+
+        // --> "" 페이지 로딩 될 땐 값이 없음! 따라서 함수 안에 넣어서 클릭될 때 value를 가져오도록 해야함.
+
+        // 2. 만일 100이상이면 "이용 불가"
+        if (w >= 100) {
+          document.querySelector('#result').innerText = '이용 불가';
+        }
+        // 3. 100 미만이면 "이용 가능"
+        else {
+          document.querySelector('#result').innerText = '이용 가능';
+        }
+      }
+
+      // but!!
+      // 함수 밖에서
+      // let w = document.querySelector('#weight'); 페이지 로딩 시점에 참조값을 가져와서
+      // function check () {
+      //   let input.value
+      // }
+      // 이렇게 함수 안에 쓰는건 가능
+    </script>
+  </body>
+</html>

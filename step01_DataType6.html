@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType6.html</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <button onclick="pushElephant()">코끼리를 냉장고에 넣기</button>
+    <div class="box" onmouseleave="pushElephant()"></div>
+
+    <script>
+      //코끼리를 냉장고에 넣기
+      //   console.log('냉장고 문을 연다');
+      //   console.log('코끼리를 집어 넣는다');
+      //   console.log('냉장고 문을 닫는다');
+      // 그냥 이렇게 작성하면 page loading 시점에 한번에 실행됨
+      // -> 실행 시점을 바꾸려면?
+      // -> function을 만들자!
+      let pushElephant = function () {
+        console.log('냉장고 문을 연다');
+        console.log('코끼리를 집어 넣는다');
+        console.log('냉장고 문을 닫는다');
+      }; // -> 페이지 로딩 시점에 실행되지 X
+    </script>
+  </body>
+</html>

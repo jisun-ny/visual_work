@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step09_audio.html</title>
+  </head>
+  <body>
+    <h1>오디오 재생</h1>
+    <!-- ❤️ -->
+    <audio id="music2" src="sounds/piano.mp3" controls></audio>
+
+    <script>
+      //자바스크립트를 이용하여 음악 플레이
+      //❤️ 위 하트를 대신해 주는 것이 밑에 라인! 대신 UI가 없는..
+      const music = new Audio("sounds/piano.mp3");
+      //로딩이 완료 되었을 때 호출되는 함수 등록
+      music.onloadeddata = () => {
+        console.log("음악로딩 완료!");
+      };
+
+      const music2 = document.querySelector("#music2");
+
+      //   music.play();
+      //   music.pause();
+      //   music.currentTime();
+      //   music.duration();
+      //   ...
+
+      const fire = new Audio("sounds/fire.wav");
+      const birddie = new Audio("sounds/birddie.mp3");
+    </script>
+  </body>
+</html>

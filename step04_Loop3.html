@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step04_Loop3.html</title>
+  </head>
+  <body>
+    <h1>배열과 반복문</h1>
+    <ul>
+      <!-- li{li$}*5 -->
+      <li>li1</li>
+      <li>li2</li>
+      <li>li3</li>
+      <li>li4</li>
+      <li>li5</li>
+    </ul>
+    <button onclick="print()">출력하기</button>
+
+    <script>
+      //li의 innerText로 출력할 문자열이 배열에 준비되어 있다고 생각하자
+      let names = ['김구라', '해골', '원숭이', '주뎅이', '덩어리'];
+
+      //출력하기 버튼을 누르면 names 배열에 저장된 문자열이 li 요소의 innerText로 출력되도록 해보세요.
+
+      let print = () => {
+        for (let i = 0; i < 5; i++)
+          document.querySelectorAll('li')[i].innerText = names[i];
+      };
+    </script>
+  </body>
+</html>

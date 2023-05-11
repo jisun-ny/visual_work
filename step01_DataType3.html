@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step01_DataType3.html</title>
+  </head>
+  <body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>object</strong> type</p>
+    <script>
+      // 한명의 회원정보를 다루고자한다.
+      // 번호,        이름,       남자인지 여부
+      // number type, string, boolean 타입 데이터 활용
+
+      // 번호는 1, 이름은 김구라, 성별 남자인 회원의 정보를 변수 3개에 각각 담아보기
+      let num = 1;
+      let name = '김구라';
+      let isMan = true; //boolean 타입 변수명은 대화식으로 지으면 굳. ex. inMan = true;-> 오키 남자 트루 gender = true;-> 엥?
+
+      // 회원이 오조 오억명이라면?
+      // 여러개의 정보를 묶음으로 관리하고싶다....
+      // 하나의 변수명으로 여러개의 값을 한번에 관리할 수 없을까?
+      // {} object type
+      let mem1 = { num: 1, name: '김구라', isMan: true };
+
+      let mem2 = {
+        num: 1,
+        name: '김구라',
+        isMan: true,
+      };
+
+      // object의 특정방에 넣을 데이터를 변수명으로 불러와서 넣을수도 있다.
+      let mem3 = { num: num, name: name, isMan: isMan }; // 이렇게 value값이 위에 변수로 정의되어 있다면 ''없이 불러옴
+      // 위를 줄여서 아래와 같이 object를 만들수도 있다.
+      let mem4 = { num, name, isMan };
+
+      // a는 object type
+      let a = mem1; // mem1에 있는 object type 값을 a에 복사
+      // b는 number type
+      let b = mem1.num;
+      // c는 string type
+      let c = mem1.name;
+      // d는 boolean type
+      let d = mem1.isMan;
+
+      // 빈 object를 만들고 나중에 필요에 따라서 데이터를 추가할 수 있다.
+      let mem5 = {};
+      mem5.num = 2;
+      mem5.name = '해골';
+      mem5.isMan = false;
+
+      // 이미 만들어져 있는 object에 저장된 값 수정하기
+      mem2.num = 3;
+      mem2.name = '원숭이';
+
+      // 저장소의 이름 key: 저장 정보 value
+
+      //mem1.num --> . 점을 찍어서 저장된 정보를 참조할 수 있다!!
+    </script>
+  </body>
+</html>

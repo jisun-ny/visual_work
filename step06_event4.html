@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step06_event4.html</title>
+
+    <style>
+      .wrapper {
+        display: flex;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>원하는 박스를 클릭해 보세요</h1>
+    <div class="wrapper">
+      <!-- div.box{box$}*10 -->
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+      <div class="box">box4</div>
+      <div class="box">box5</div>
+      <div class="box">box6</div>
+      <div class="box">box7</div>
+      <div class="box">box8</div>
+      <div class="box">box9</div>
+      <div class="box">box10</div>
+    </div>
+
+    <script>
+      // 클릭된 box div의 배경색을 노란색으로 변경되도록 프로그래밍 해 보세요.
+      /*
+        1. 이벤트리스너를 만듬
+         클릭했을 때 background-color 노란색으로
+        2. [i]가 바뀌면 클릭될 때마다 바꿀 수 있다. 따라서 for 반복문 사용해서 모든 div에 이벤트 리스너를 추가해주자!
+        */
+      for (let i = 0; i < 10; i++) {
+        document
+          .querySelectorAll('.box')
+          [i].addEventListener('click', (event) => {
+            event.target.style.backgroundColor = 'yellow';
+          });
+      }
+    </script>
+  </body>
+</html>

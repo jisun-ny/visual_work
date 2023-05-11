@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: blue;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        cursor: pointer;
+        transition: margin-left 0.4s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>인라인 css 테스트</h1>
+    <p>가나다라마바사아자</p>
+    <div class="box">눌러보셈</div>
+    <script>
+      // 위의 box div를 클릭하면 우측으로 100px 이동하도록 프로그래밍 해보세용
+      // 레프트 마진 조절
+      let mLeft = 0;
+      function handleClickEvent() {
+        mLeft += 100;
+        document.querySelector('.box').style.marginLeft = mLeft + 'px';
+      }
+
+      document
+        .querySelector('.box')
+        .addEventListener('click', handleClickEvent);
+    </script>
+  </body>
+</html>
