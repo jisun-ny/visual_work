@@ -85,6 +85,15 @@
       //초침 이미지
       const secImg = new Image();
       secImg.src = "images/clock_sec.png";
+      //분침 이미지
+      const minImg = new Image();
+      minImg.src = "images/clock_min.png";
+      //시침 이미지
+      const hourImg = new Image();
+      hourImg.src = "images/clock_hour.png";
+      //시계 캡 이미지
+      const capImg = new Image();
+      capImg.src = "images/clock_point.png";
       //시계를 그릴 좌표
       const clockX = 700;
       const clockY = 100;
@@ -112,14 +121,50 @@
         context.translate(clockX, clockY);
         //시계를 원점에 그리기
         context.drawImage(dialImg, 0 - 100, 0 - 100, 200, 200);
+
+        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         //테스트로 초침을 그리기 전에 context를 30도 회전해서 그려보기
         // context.rotate((30 * Math.PI) / 180);
         //라디안이니까 30도를 만들기위해서
         // 30 * PI / 180 하면 라디안을 도로 바꿀 수 있음.
-        context.rotate((count * Math.PI) / 180);
+        // context.rotate((count * Math.PI) / 180);
 
         //초침 그리기(시계 중심 좌표를 기준으로 그려본다)
+        // context.drawImage(secImg, 0 - 4, 0 - 90, 8, 90);
+        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ --> 밑으로 이동
+
+        //그러면 실제 시간을 얻어와서 캔버스에 그려야함! new Date() 활용
+        const d = new Date();
+        const hour = d.getHours();
+        const min = d.getMinutes();
+        const sec = d.getSeconds();
+
+        //---초침그리기---
+        //초침의 회전각 계산 --> 초침은 1초에 6도 움직임
+        const rSec = 6 * sec * (Math.PI / 180); //라디안으로 환산
+        //좌표계를 회전시켜서
+        context.rotate(rSec);
+        //초침 그리기(시계 중심 좌표를 기준으로 그려본다)
         context.drawImage(secImg, 0 - 4, 0 - 90, 8, 90);
+
+        //---분침 그리기---
+        //분침의 회전각 만큼 좌표계를 회전시켜서
+        // const rMin = 6 * min * (Math.PI / 180);
+        //위 처럼 코드를 짜면 60초 지났을 때만 분침이 한번씩 움직인다.
+        const rMin = (6 * min + (6 * sec) / 60) * (Math.PI / 180);
+        //                      초가 지난만큼의 비율을 더 더해줘야함.
+        context.rotate(rMin - rSec);
+        context.drawImage(minImg, 0 - 4, 0 - 90, 8, 90);
+
+        //---시침 그리기---
+        //시침의 회전각 계산
+        const rHour = (30 * hour + (30 * min) / 60) * (Math.PI / 180);
+        //                        현재 몇분이냐에 따라서 시침이 움직이게 해줘야함.
+        context.rotate(rHour - rMin);
+        context.drawImage(hourImg, 0 - 4, 0 - 90, 8, 90);
+
+        //시계에 캡 그리기
+        context.drawImage(capImg, -7, -7, 14, 14);
         //다른 그림에 영향이 가지 않도록 저장했던 정상상태로 contet를 되돌린다.
         context.restore();
         // 원래 캔버스는 좌상단에 일치하는 좌표곈데 시계를 그릴떄만 시계의 위치로 좌표계를 평행이동하여 그리고 다시 정상 좌표계(좌상단)으로 돌아감
