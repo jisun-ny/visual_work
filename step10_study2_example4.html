@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step10_study2_example4.html</title>
+  </head>
+  <body>
+    <input type="text" placeholder="번호입력" id="inputNum" />
+    <br />
+    <input type="text" placeholder="이름입력" id="inputName" />
+    <br />
+    <input type="text" placeholder="주소입력" id="inputAddr" />
+    <br />
+    <button id="saveBtn">저장</button>
+    <button id="deleteBtn">삭제</button>
+
+    <script>
+      //번호, 이름, 주소를 입력하고 저장 버튼을 누르면 localStorage에 저장하고
+
+      //하나씩 3줄로 저장하는 것보다 3개를 JSON으로 묶어서 한 덩어리로 저장하자!
+      document.querySelector("#saveBtn").addEventListener("click", () => {
+        // 1. 입력한 내용을 읽어와서
+        const num = Number(document.querySelector("#inputNum").value);
+        const name = document.querySelector("#inputName").value;
+        const addr = document.querySelector("#inputAddr").value;
+        //Number함수 안에다가 넣으면 return값으로 숫자타입 반환
+
+        // 2. object에 담고
+        // const obj = { num: num, name: name, addr: addr };
+        const obj = { num, name, addr };
+
+        // 3. object를 JSON 문자열로 만들어서
+        // --> localStorage에는 문자열만 저장할 수 있으니까!
+        const json = Json.stringify(obj);
+        // 4. localStorage에 저장
+        localStorage.savedMember = json;
+        // savedMember라는 key값에 저장
+      });
+
+      //삭제버튼을 누르면 localStorage에서 저장된 정보를 삭제하고
+      document.querySelector("#deleteBtn").addEventListener("click", () => {
+        delete localStorage.savedMember;
+      });
+
+      //페이지 로딩 시점에 localStorage에 저장된 번호, 이름, 주소가 있다면
+      //위의 input요소에 출력되도록 해보세요.
+      if (localStorage.savedMember) {
+        //localStorage에 저장된 문자열을 이용해서 object를 만든다
+        const obj = JSON.parse(localStorage.savedMember);
+        //object에 저장된 내용을 input 요소에 출력한다.
+        document.querySelector("#inputNum").value = obj.num; //object니까 .찍어서 사용 가능
+        document.querySelector("#inputName").value = obj.name;
+        document.querySelector("#inputAddr").value = obj.addr;
+      }
+    </script>
+  </body>
+
+  <!-- 
+    *in java*
+    if () {}
+    boolean type만 조건 문에 들어갈 수 있다.
+
+    *in javascript*
+    if () {}
+    보통은 boolean이 오지만 상황에 따라
+    boolean, string, number, object, array... 다 올 수 있다
+    
+    if (만일 true이거나 빈 값(0, null, `빈 문자열`, undefined)이 아니면) {실행}
+
+    빈 값인 경우 false 처리
+
+    if(변수 a) {} 인 경우
+    변수 a가 false거나 비어 있지 않으면 실행해라! 
+    
+   -->
+</html>
